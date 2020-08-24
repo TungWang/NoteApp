@@ -17,7 +17,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -301,18 +300,22 @@ class _MyHomePageState extends State<MyHomePage>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(note.content),
-                          GestureDetector(
-                            onTap: () {
-                              pressedMore(note);
-                            },
-                            child: Icon(Icons.more_horiz),
-                          ),
-                        ],
+                      Expanded(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            SingleChildScrollView(
+                              child: Text(note.content),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                pressedMore(note);
+                              },
+                              child: Icon(Icons.more_horiz),
+                            ),
+                          ],
+                        ),
                       ),
                       Text(
                         'Update time: ${getDateString(dateFormat: 'yyyy/MM/dd HH:mm', dateTime: DateTime.parse(note.date))}',
