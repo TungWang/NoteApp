@@ -305,8 +305,12 @@ class _MyHomePageState extends State<MyHomePage>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            SingleChildScrollView(
-                              child: Text(note.content),
+                            Flexible(
+                              child: Text(
+                                note.content,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 5,
+                              ),
                             ),
                             GestureDetector(
                               onTap: () {
